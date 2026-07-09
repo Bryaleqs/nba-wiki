@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Salon de Banderines · NBA Wiki</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="hero">
+    <div class="eyebrow">Universidad de Guayaquil &middot; Programacion Web</div>
+    <h1>Salon de <span>Banderines</span></h1>
+    <p class="sub">Un recorrido por los campeonatos de la NBA, temporada por temporada: el equipo campeon, su rival en la final y el jugador mas valioso.</p>
+  </header>
+
+  <section id="filters" class="filters">
+    <button class="active" data-filter="todos">Todos</button>
+    <button data-filter="Este">Conferencia Este</button>
+    <button data-filter="Oeste">Conferencia Oeste</button>
+  </section>
+
+  <nav id="rafters" class="rafters" aria-label="Linea de tiempo de campeonatos"></nav>
+
+  <main id="grid" class="grid"></main>
+
+  <footer>
+    Proyecto academico &middot; Bryan Quinonez Spooner &middot; Datos de campeonatos NBA 2015-2026
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

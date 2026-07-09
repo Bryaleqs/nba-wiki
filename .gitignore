@@ -1,0 +1,20 @@
+# Maven
+target/
+*.class
+
+# Base de datos H2 generada en tiempo de ejecucion (no se sube, se auto-crea)
+javaweb/data/
+**/data/*.mv.db
+**/data/*.trace.db
+
+# IDEs
+.idea/
+*.iml
+.vscode/
+.settings/
+.project
+.classpath
+
+# Sistema
+.DS_Store
+Thumbs.db

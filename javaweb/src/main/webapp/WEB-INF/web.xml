@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+         http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
+
+  <display-name>NBA Wiki</display-name>
+
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+
+  <!-- Base de datos H2 EMBEBIDA: no depende de ningun servicio externo.
+       El archivo se crea solo (carpeta data/) y se auto-inicializa con
+       el script nba_wiki_h2.sql la primera vez que arranca la app. -->
+  <context-param>
+    <param-name>db.url</param-name>
+    <param-value>jdbc:h2:file:./data/nba_wiki;AUTO_SERVER=TRUE;INIT=RUNSCRIPT FROM 'classpath:nba_wiki_h2.sql'</param-value>
+  </context-param>
+  <context-param>
+    <param-name>db.user</param-name>
+    <param-value>sa</param-value>
+  </context-param>
+  <context-param>
+    <param-name>db.password</param-name>
+    <param-value></param-value>
+  </context-param>
+
+  <!-- Si en algun momento prefieres tu propio servidor MySQL en vez de H2,
+       comenta el bloque de arriba y descomenta este, con tus datos reales:
+
+  <context-param>
+    <param-name>db.url</param-name>
+    <param-value>jdbc:mysql://localhost:3306/nba_wiki?useSSL=false&amp;serverTimezone=UTC</param-value>
+  </context-param>
+  <context-param>
+    <param-name>db.user</param-name>
+    <param-value>root</param-value>
+  </context-param>
+  <context-param>
+    <param-name>db.password</param-name>
+    <param-value>tu_password</param-value>
+  </context-param>
+  -->
+
+</web-app>
