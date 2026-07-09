@@ -9,7 +9,7 @@ DROP TABLE IF EXISTS campeonatos;
 DROP TABLE IF EXISTS jugadores;
 DROP TABLE IF EXISTS equipos;
 
-CREATE TABLE equipos (
+CREATE TABLE IF NOT EXISTS equipos (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(60) NOT NULL,
     ciudad VARCHAR(60) NOT NULL,
@@ -18,14 +18,14 @@ CREATE TABLE equipos (
     abreviatura VARCHAR(4) NOT NULL
 );
 
-CREATE TABLE jugadores (
+CREATE TABLE IF NOT EXISTS jugadores (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(80) NOT NULL,
     posicion VARCHAR(20),
     nacionalidad VARCHAR(50)
 );
 
-CREATE TABLE campeonatos (
+CREATE TABLE IF NOT EXISTS campeonatos (
     id INT AUTO_INCREMENT PRIMARY KEY,
     anio INT NOT NULL,
     equipo_campeon_id INT NOT NULL,
@@ -37,7 +37,7 @@ CREATE TABLE campeonatos (
     FOREIGN KEY (mvp_finales_id) REFERENCES jugadores(id)
 );
 
-CREATE TABLE campeonato_roster (
+CREATE TABLE IF NOT EXISTS campeonato_roster (
     campeonato_id INT NOT NULL,
     jugador_id INT NOT NULL,
     PRIMARY KEY (campeonato_id, jugador_id),
@@ -45,7 +45,7 @@ CREATE TABLE campeonato_roster (
     FOREIGN KEY (jugador_id) REFERENCES jugadores(id)
 );
 
-CREATE TABLE usuarios (
+CREATE TABLE IF NOT EXISTS usuarios (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nombre_usuario VARCHAR(50) NOT NULL UNIQUE,
     email VARCHAR(100) NOT NULL UNIQUE,
@@ -54,7 +54,7 @@ CREATE TABLE usuarios (
     fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE favoritos (
+CREATE TABLE IF NOT EXISTS favoritos (
     usuario_id INT NOT NULL,
     campeonato_id INT NOT NULL,
     fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
