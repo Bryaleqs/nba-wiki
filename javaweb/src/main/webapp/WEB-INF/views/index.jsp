@@ -41,7 +41,7 @@
   <section class="filters filters-decada">
     <a href="campeonatos"><button class="chip-decada ${decadaActiva == 'todos' ? 'active' : ''}">Todas las decadas</button></a>
     <c:forEach var="d" begin="1940" end="2020" step="10">
-      <a href="campeonatos?decada=${d}"><button class="chip-decada ${decadaActiva == d ? 'active' : ''}">${d}s</button></a>
+      <a href="campeonatos?decada=${d}"><button class="chip-decada ${decadaActiva != 'todos' && decadaActiva == d ? 'active' : ''}">${d}s</button></a>
     </c:forEach>
   </section>
 

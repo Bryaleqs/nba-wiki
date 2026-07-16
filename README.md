@@ -6,8 +6,8 @@ Construido en dos versiones con el mismo diseño:
 
 | Versión | Tecnología | Demo |
 |---|---|---|
-| 🌐 Estática | HTML + CSS + JS puro | _pega aquí tu link de Netlify_ |
-| ☕ Dinámica | Servlets + JSP + JDBC | _pega aquí tu link de Render_ |
+| 🌐 Estática | HTML + CSS + JS puro | [nba-wiki-bryan-pgweb.netlify.app](https://nba-wiki-bryan-pgweb.netlify.app/) |
+| ☕ Dinámica | Servlets + JSP + JDBC | [nba-wiki.onrender.com](https://nba-wiki.onrender.com) |
 
 ---
 
