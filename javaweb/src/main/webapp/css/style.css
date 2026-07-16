@@ -17,6 +17,8 @@
 
 * { box-sizing: border-box; }
 
+html { scroll-behavior: smooth; }
+
 body {
   margin: 0;
   background: var(--bg);
@@ -36,12 +38,19 @@ h1, h2, h3, .display {
 a { color: inherit; }
 
 /* ---------- HERO ---------- */
+@keyframes heroGlow {
+  0%, 100% { background-position: 50% 0%, 0 0; }
+  50% { background-position: 55% 10%, 0 0; }
+}
+
 .hero {
   padding: 64px 24px 40px;
   text-align: center;
   background:
     radial-gradient(ellipse at top, rgba(212,175,55,0.08), transparent 60%),
     repeating-linear-gradient(90deg, transparent, transparent 78px, var(--line) 79px);
+  background-size: 200% 200%, auto;
+  animation: heroGlow 8s ease-in-out infinite;
   border-bottom: 1px solid var(--line);
 }
 
@@ -58,7 +67,19 @@ a { color: inherit; }
   color: var(--ink);
 }
 
-.hero h1 span { color: var(--gold); }
+@keyframes shimmerGold {
+  0%   { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+.hero h1 span {
+  background: linear-gradient(90deg, var(--gold), #f5e2a3, var(--gold), #f5e2a3, var(--gold));
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmerGold 5s linear infinite;
+}
 
 .hero p.sub {
   color: var(--muted);
@@ -149,10 +170,11 @@ a { color: inherit; }
   border-radius: 999px;
   font-size: 13px;
   cursor: pointer;
-  transition: 0.15s;
+  transition: color 0.15s, border-color 0.15s, transform 0.15s, background 0.15s;
 }
 
-.filters button:hover { color: var(--ink); border-color: var(--gold); }
+.filters button:hover { color: var(--ink); border-color: var(--gold); transform: translateY(-2px); }
+.filters button:active { transform: translateY(0) scale(0.96); }
 
 .filters button.active {
   background: var(--gold);
@@ -249,6 +271,12 @@ a { color: inherit; }
   padding: 4px 10px;
   border-radius: 999px;
   color: var(--ink);
+  transition: border-color 0.15s, transform 0.15s;
+}
+
+.card .roster span:hover {
+  border-color: var(--gold);
+  transform: translateY(-2px);
 }
 
 .mvp-tag {
@@ -259,6 +287,11 @@ a { color: inherit; }
   border: 1px solid var(--gold);
   padding: 3px 10px;
   border-radius: 999px;
+  transition: box-shadow 0.2s;
+}
+
+.card:hover .mvp-tag {
+  box-shadow: 0 0 12px rgba(212,175,55,0.25);
 }
 
 footer {
@@ -312,9 +345,11 @@ footer {
   font-size: 12px;
   cursor: pointer;
   font-family: inherit;
+  transition: border-color 0.15s, color 0.15s, transform 0.15s;
 }
 
-.fav-btn:hover { border-color: var(--gold); color: var(--gold); }
+.fav-btn:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
+.fav-btn:active { transform: translateY(0) scale(0.96); }
 
 .fav-btn.activo {
   border-color: var(--gold);
@@ -408,9 +443,11 @@ footer {
   font-size: 14px;
   font-family: inherit;
   margin-top: 6px;
+  transition: filter 0.15s, transform 0.15s;
 }
 
-.btn-primary:hover { filter: brightness(1.08); }
+.btn-primary:hover { filter: brightness(1.08); transform: translateY(-1px); }
+.btn-primary:active { transform: translateY(0) scale(0.98); }
 
 .form-footer-link {
   text-align: center;
@@ -507,6 +544,12 @@ footer {
   color: var(--gold);
   padding: 6px 14px;
   border-radius: 999px;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.badge-pill:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 4px 14px rgba(212,175,55,0.25);
 }
 
 .team-hero {

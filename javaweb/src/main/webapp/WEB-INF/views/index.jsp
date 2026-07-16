@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Salon de Banderines &middot; NBA Wiki (JavaWeb)</title>
+<title>Salon de Banderines &middot; NBA Wiki</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
@@ -13,9 +13,9 @@
 <body>
 
   <header class="hero">
-    <div class="eyebrow">Universidad de Guayaquil &middot; Programacion Web (JavaWeb)</div>
+    <div class="eyebrow">Universidad de Guayaquil &middot; Programacion Web</div>
     <h1>Salon de <span>Banderines</span></h1>
-    <p class="sub">Version dinamica: los datos se leen en vivo desde la base de datos a traves de un Servlet con JDBC.</p>
+    <p class="sub">Un recorrido por los 80 campeonatos de la NBA, desde 1947 hasta hoy: el equipo campeon, su rival en la final y el jugador mas valioso de cada año.</p>
   </header>
 
   <div class="authbar">
