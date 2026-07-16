@@ -32,7 +32,7 @@ public class LoginServlet extends HttpServlet {
         try (Connection con = DBConnection.getConnection(getServletContext())) {
 
             try (PreparedStatement ps = con.prepareStatement(
-                    "SELECT id, nombre_usuario, email, password_hash, salt FROM usuarios WHERE nombre_usuario = ?")) {
+                    "SELECT id, nombre_usuario, email, password_hash, salt, equipo_favorito_id FROM usuarios WHERE nombre_usuario = ?")) {
                 ps.setString(1, nombreUsuario);
                 try (ResultSet rs = ps.executeQuery()) {
                     if (!rs.next()) {
@@ -49,6 +49,8 @@ public class LoginServlet extends HttpServlet {
                     }
 
                     Usuario usuario = new Usuario(rs.getInt("id"), rs.getString("nombre_usuario"), rs.getString("email"));
+                    int equipoFav = rs.getInt("equipo_favorito_id");
+                    usuario.setEquipoFavoritoId(rs.wasNull() ? null : equipoFav);
                     HttpSession session = req.getSession(true);
                     session.setAttribute("usuario", usuario);
                 }

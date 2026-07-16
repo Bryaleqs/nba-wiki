@@ -22,6 +22,7 @@
     <c:choose>
       <c:when test="${not empty sessionScope.usuario}">
         <span class="saludo">Hola, <b>${sessionScope.usuario.nombreUsuario}</b></span>
+        <a href="${pageContext.request.contextPath}/perfil">Mi perfil</a>
         <a href="${pageContext.request.contextPath}/logout" class="btn-link">Cerrar sesion</a>
       </c:when>
       <c:otherwise>
@@ -37,9 +38,16 @@
     <a href="campeonatos?conferencia=Oeste"><button class="${conferenciaActiva == 'Oeste' ? 'active' : ''}">Conferencia Oeste</button></a>
   </section>
 
+  <section class="filters filters-decada">
+    <a href="campeonatos"><button class="chip-decada ${decadaActiva == 'todos' ? 'active' : ''}">Todas las decadas</button></a>
+    <c:forEach var="d" begin="1940" end="2020" step="10">
+      <a href="campeonatos?decada=${d}"><button class="chip-decada ${decadaActiva == d ? 'active' : ''}">${d}s</button></a>
+    </c:forEach>
+  </section>
+
   <nav class="rafters" aria-label="Linea de tiempo de campeonatos">
-    <c:forEach var="c" items="${campeonatos}">
-      <a href="#card-${c.anio}" class="banner" style="--team-color: ${c.colorPrincipal}">
+    <c:forEach var="c" items="${campeonatos}" varStatus="st">
+      <a href="#card-${c.anio}" class="banner fade-in-up" style="--team-color: ${c.colorPrincipal}; animation-delay: ${st.index * 0.02}s;">
         <div class="flag">
           <span class="year">${c.anio}</span>
           <span class="abbr">${c.abreviatura}</span>
@@ -50,10 +58,15 @@
   </nav>
 
   <main class="grid">
-    <c:forEach var="c" items="${campeonatos}">
-      <div class="card" id="card-${c.anio}" style="--team-color: ${c.colorPrincipal}">
+    <c:forEach var="c" items="${campeonatos}" varStatus="st">
+      <div class="card fade-in-up" id="card-${c.anio}" style="--team-color: ${c.colorPrincipal}; animation-delay: ${(st.index % 12) * 0.04}s;">
         <div class="top">
-          <div class="badge">${c.abreviatura}</div>
+          <div class="badge">
+            <img class="badge-logo" src="${pageContext.request.contextPath}/img/logos/${c.abreviatura}.png" alt=""
+                 onload="this.style.display='block'; this.nextElementSibling.style.display='none';"
+                 onerror="this.style.display='none';">
+            <span class="badge-fallback">${c.abreviatura}</span>
+          </div>
           <div>
             <h3>${c.campeon}</h3>
             <div class="year-tag">${c.ciudad} &middot; Temporada ${c.anio}</div>

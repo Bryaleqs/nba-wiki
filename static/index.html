@@ -13,7 +13,7 @@
   <header class="hero">
     <div class="eyebrow">Universidad de Guayaquil &middot; Programacion Web</div>
     <h1>Salon de <span>Banderines</span></h1>
-    <p class="sub">Un recorrido por los campeonatos de la NBA, temporada por temporada: el equipo campeon, su rival en la final y el jugador mas valioso.</p>
+    <p class="sub">Un recorrido por los 80 campeonatos de la NBA, desde 1947 hasta hoy: el equipo campeon, su rival en la final y el jugador mas valioso de cada año.</p>
   </header>
 
   <section id="filters" class="filters">
@@ -22,12 +22,25 @@
     <button data-filter="Oeste">Conferencia Oeste</button>
   </section>
 
+  <section id="filtersDecada" class="filters filters-decada">
+    <button class="chip-decada active" data-decada="todos">Todas las decadas</button>
+    <button class="chip-decada" data-decada="1940">1940s</button>
+    <button class="chip-decada" data-decada="1950">1950s</button>
+    <button class="chip-decada" data-decada="1960">1960s</button>
+    <button class="chip-decada" data-decada="1970">1970s</button>
+    <button class="chip-decada" data-decada="1980">1980s</button>
+    <button class="chip-decada" data-decada="1990">1990s</button>
+    <button class="chip-decada" data-decada="2000">2000s</button>
+    <button class="chip-decada" data-decada="2010">2010s</button>
+    <button class="chip-decada" data-decada="2020">2020s</button>
+  </section>
+
   <nav id="rafters" class="rafters" aria-label="Linea de tiempo de campeonatos"></nav>
 
   <main id="grid" class="grid"></main>
 
   <footer>
-    Proyecto academico &middot; Bryan Quinonez Spooner &middot; Datos de campeonatos NBA 2015-2026
+    Proyecto academico &middot; Bryan Quinonez Spooner &middot; Datos de campeonatos NBA 1947-2026
   </footer>
 
   <script src="js/data.js"></script>

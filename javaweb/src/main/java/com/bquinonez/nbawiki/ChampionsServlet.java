@@ -28,8 +28,8 @@ import javax.servlet.http.HttpSession;
 public class ChampionsServlet extends HttpServlet {
 
     private static final String SQL_CAMPEONATOS =
-        "SELECT c.id, c.anio, c.resultado_serie, " +
-        "       ec.nombre AS campeon, ec.ciudad, ec.abreviatura, ec.color_principal, ec.conferencia, " +
+        "SELECT c.id, c.anio, c.resultado_serie, c.conferencia_campeon AS conferencia, " +
+        "       ec.nombre AS campeon, ec.ciudad, ec.abreviatura, ec.color_principal, " +
         "       ef.nombre AS finalista, j.nombre AS mvp " +
         "FROM campeonatos c " +
         "JOIN equipos ec ON c.equipo_campeon_id = ec.id " +
@@ -48,33 +48,56 @@ public class ChampionsServlet extends HttpServlet {
             throws ServletException, IOException {
 
         String conferencia = req.getParameter("conferencia"); // Este | Oeste | null
+        String decadaParam = req.getParameter("decada");      // ej. "1990" | null
+
         List<Campeonato> lista = new ArrayList<>();
         Map<Integer, Campeonato> idAAnio = new LinkedHashMap<>();
 
-        String whereClause = "";
+        List<String> condiciones = new ArrayList<>();
+        List<Object> parametros = new ArrayList<>();
+
         if ("Este".equals(conferencia) || "Oeste".equals(conferencia)) {
-            whereClause = "WHERE ec.conferencia = '" + conferencia + "'";
+            condiciones.add("c.conferencia_campeon = ?");
+            parametros.add(conferencia);
         }
+
+        Integer decadaInicio = null;
+        try {
+            if (decadaParam != null && !decadaParam.isEmpty()) {
+                decadaInicio = Integer.parseInt(decadaParam);
+                condiciones.add("c.anio >= ? AND c.anio < ?");
+                parametros.add(decadaInicio);
+                parametros.add(decadaInicio + 10);
+            }
+        } catch (NumberFormatException ignored) {
+            decadaInicio = null;
+        }
+
+        String whereClause = condiciones.isEmpty() ? "" : "WHERE " + String.join(" AND ", condiciones);
 
         try (Connection con = DBConnection.getConnection(getServletContext())) {
 
-            try (PreparedStatement ps = con.prepareStatement(String.format(SQL_CAMPEONATOS, whereClause));
-                 ResultSet rs = ps.executeQuery()) {
-
-                while (rs.next()) {
-                    Campeonato c = new Campeonato();
-                    c.setId(rs.getInt("id"));
-                    c.setAnio(rs.getInt("anio"));
-                    c.setCampeon(rs.getString("campeon"));
-                    c.setCiudad(rs.getString("ciudad"));
-                    c.setAbreviatura(rs.getString("abreviatura"));
-                    c.setColorPrincipal(rs.getString("color_principal"));
-                    c.setConferencia(rs.getString("conferencia"));
-                    c.setFinalista(rs.getString("finalista"));
-                    c.setResultadoSerie(rs.getString("resultado_serie"));
-                    c.setMvp(rs.getString("mvp"));
-                    lista.add(c);
-                    idAAnio.put(rs.getInt("id"), c);
+            try (PreparedStatement ps = con.prepareStatement(String.format(SQL_CAMPEONATOS, whereClause))) {
+                for (int i = 0; i < parametros.size(); i++) {
+                    ps.setObject(i + 1, parametros.get(i));
+                }
+                try (ResultSet rs = ps.executeQuery()) {
+                    while (rs.next()) {
+                        Campeonato c = new Campeonato();
+                        c.setId(rs.getInt("id"));
+                        c.setAnio(rs.getInt("anio"));
+                        c.setCampeon(rs.getString("campeon"));
+                        c.setCiudad(rs.getString("ciudad"));
+                        c.setAbreviatura(rs.getString("abreviatura"));
+                        c.setColorPrincipal(rs.getString("color_principal"));
+                        c.setConferencia(rs.getString("conferencia"));
+                        c.setFinalista(rs.getString("finalista"));
+                        c.setResultadoSerie(rs.getString("resultado_serie"));
+                        String mvpNombre = rs.getString("mvp");
+                        c.setMvp(mvpNombre != null ? mvpNombre : "Premio no existia aun (anterior a 1969)");
+                        lista.add(c);
+                        idAAnio.put(rs.getInt("id"), c);
+                    }
                 }
             }
 
@@ -130,6 +153,7 @@ public class ChampionsServlet extends HttpServlet {
 
         req.setAttribute("campeonatos", lista);
         req.setAttribute("conferenciaActiva", conferencia == null ? "todos" : conferencia);
+        req.setAttribute("decadaActiva", decadaInicio == null ? "todos" : String.valueOf(decadaInicio));
         req.getRequestDispatcher("/WEB-INF/views/index.jsp").forward(req, resp);
     }
 }

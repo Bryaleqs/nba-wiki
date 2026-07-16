@@ -201,6 +201,24 @@ a { color: inherit; }
   color: #14161b;
   background: var(--team-color, var(--gold));
   flex: 0 0 auto;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Logo real: oculto por defecto, se muestra solo si la imagen carga bien.
+   Si el archivo no existe, onerror la mantiene oculta y se ve el respaldo. */
+.badge-logo {
+  display: none;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.badge-fallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .card h3 { font-size: 20px; }
@@ -402,3 +420,186 @@ footer {
 }
 
 .form-footer-link a { color: var(--gold); text-decoration: none; }
+
+/* ---------- ANIMATIONS ---------- */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in-up {
+  opacity: 0;
+  animation: fadeInUp 0.5s ease forwards;
+}
+
+.fade-in {
+  opacity: 0;
+  animation: fadeInUp 0.5s ease forwards;
+}
+
+@keyframes pulseGold {
+  0%   { box-shadow: 0 0 0 0 rgba(212,175,55,0.5); }
+  70%  { box-shadow: 0 0 0 10px rgba(212,175,55,0); }
+  100% { box-shadow: 0 0 0 0 rgba(212,175,55,0); }
+}
+
+.fav-btn.activo { animation: pulseGold 0.6s ease-out; }
+
+.card {
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.35);
+}
+
+.banner .flag { transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease; }
+
+.banner:hover .flag {
+  box-shadow: 0 8px 18px rgba(0,0,0,0.4);
+}
+
+/* ---------- DECADE FILTER ---------- */
+.filters-decada {
+  flex-wrap: wrap;
+  padding-top: 0;
+}
+
+.chip-decada {
+  font-size: 12px;
+  padding: 6px 14px;
+}
+
+/* ---------- PERFIL PAGE ---------- */
+.perfil-wrap {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 0 24px 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.perfil-card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 26px;
+}
+
+.perfil-card h2 {
+  font-size: 18px;
+  margin-bottom: 16px;
+  color: var(--gold);
+}
+
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.badge-pill {
+  font-size: 12px;
+  background: var(--panel-2);
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  padding: 6px 14px;
+  border-radius: 999px;
+}
+
+.team-hero {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 18px;
+}
+
+.badge-big {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--team-color, var(--gold));
+  color: #14161b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Anton', sans-serif;
+  font-size: 18px;
+  flex: 0 0 auto;
+  overflow: hidden;
+  position: relative;
+}
+
+.team-hero h3 { font-size: 22px; text-transform: none; }
+
+.team-stats {
+  color: var(--muted);
+  font-size: 13px;
+  margin-top: 6px;
+}
+
+.team-stats b { color: var(--ink); }
+
+.mini-timeline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 18px;
+}
+
+.mini-timeline .dot {
+  font-size: 11px;
+  background: var(--panel-2);
+  border: 1px solid var(--team-color, var(--gold));
+  color: var(--ink);
+  padding: 4px 9px;
+  border-radius: 999px;
+}
+
+.team-picker {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.team-picker select {
+  flex: 1;
+  min-width: 200px;
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 10px 12px;
+  color: var(--ink);
+  font-family: inherit;
+  font-size: 14px;
+}
+
+.fav-chip-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.fav-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  background: var(--panel-2);
+  border: 1px solid var(--team-color, var(--line));
+  color: var(--ink);
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  transition: transform 0.15s ease;
+}
+
+.fav-chip:hover { transform: translateY(-2px); }
+
+.chip-abbr {
+  font-family: 'Anton', sans-serif;
+  color: var(--team-color, var(--gold));
+}

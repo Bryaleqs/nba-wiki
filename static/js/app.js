@@ -3,12 +3,15 @@
 const raftersEl = document.getElementById('rafters');
 const gridEl = document.getElementById('grid');
 const filtersEl = document.getElementById('filters');
+const decadeFiltersEl = document.getElementById('filtersDecada');
 
 let filtroActual = 'todos';
+let decadaActual = 'todos';
 
-function crearBanner(c) {
+function crearBanner(c, index) {
   const btn = document.createElement('button');
-  btn.className = 'banner';
+  btn.className = 'banner fade-in-up';
+  btn.style.animationDelay = (index * 0.02) + 's';
   btn.dataset.anio = c.anio;
   btn.style.setProperty('--team-color', c.color);
   btn.innerHTML = `
@@ -30,14 +33,20 @@ function crearBanner(c) {
   return btn;
 }
 
-function crearCard(c) {
+function crearCard(c, index) {
   const div = document.createElement('div');
-  div.className = 'card';
+  div.className = 'card fade-in-up';
+  div.style.animationDelay = ((index % 12) * 0.04) + 's';
   div.id = 'card-' + c.anio;
   div.style.setProperty('--team-color', c.color);
   div.innerHTML = `
     <div class="top">
-      <div class="badge">${c.abbr}</div>
+      <div class="badge">
+        <img class="badge-logo" src="img/logos/${c.abbr}.png" alt=""
+             onload="this.style.display='block'; this.nextElementSibling.style.display='none';"
+             onerror="this.style.display='none';">
+        <span class="badge-fallback">${c.abbr}</span>
+      </div>
       <div>
         <h3>${c.campeon}</h3>
         <div class="year-tag">${c.ciudad} &middot; Temporada ${c.anio}</div>
@@ -58,13 +67,18 @@ function render() {
   raftersEl.innerHTML = '';
   gridEl.innerHTML = '';
 
-  const datos = filtroActual === 'todos'
+  let datos = filtroActual === 'todos'
     ? CAMPEONATOS
     : CAMPEONATOS.filter(c => c.conferencia === filtroActual);
 
-  datos.forEach(c => {
-    raftersEl.appendChild(crearBanner(c));
-    gridEl.appendChild(crearCard(c));
+  if (decadaActual !== 'todos') {
+    const inicio = parseInt(decadaActual, 10);
+    datos = datos.filter(c => c.anio >= inicio && c.anio < inicio + 10);
+  }
+
+  datos.forEach((c, i) => {
+    raftersEl.appendChild(crearBanner(c, i));
+    gridEl.appendChild(crearCard(c, i));
   });
 }
 
@@ -76,5 +90,16 @@ filtersEl.addEventListener('click', (e) => {
   filtroActual = btn.dataset.filter;
   render();
 });
+
+if (decadeFiltersEl) {
+  decadeFiltersEl.addEventListener('click', (e) => {
+    const btn = e.target.closest('button');
+    if (!btn) return;
+    decadeFiltersEl.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    decadaActual = btn.dataset.decada;
+    render();
+  });
+}
 
 render();

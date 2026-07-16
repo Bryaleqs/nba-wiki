@@ -1,0 +1,73 @@
+DONDE PONER TUS IMAGENES DE LOGOS
+=====================================
+
+Esta carpeta es donde van los logos de los equipos. El sistema ya esta
+preparado para usarlos automaticamente: si el archivo existe, se muestra
+el logo; si no existe (o el nombre no coincide), se sigue viendo el
+circulo con las iniciales que ya tenias. Nunca se rompe la pagina.
+
+REGLAS DEL NOMBRE DE ARCHIVO (IMPORTANTE)
+---------------------------------------------
+- El nombre debe ser EXACTAMENTE la abreviatura del equipo, en mayusculas,
+  seguido de .png (o .jpg / .webp, ver mas abajo).
+- Ejemplo: el logo de los Boston Celtics va en BOS.png
+
+LISTA COMPLETA DE ARCHIVOS QUE PUEDES AGREGAR
+--------------------------------------------------
+(son los 25 equipos que aparecen como CAMPEONES en la wiki; los que
+solo aparecen como finalistas no muestran logo, asi que no hacen falta)
+
+  BAL.png   -> Baltimore Bullets (1948)
+  BOS.png   -> Boston Celtics
+  CHI.png   -> Chicago Bulls
+  CLE.png   -> Cleveland Cavaliers
+  DAL.png   -> Dallas Mavericks
+  DEN.png   -> Denver Nuggets
+  DET.png   -> Detroit Pistons
+  GSW.png   -> Golden State Warriors
+  HOU.png   -> Houston Rockets
+  LAL.png   -> Los Angeles Lakers
+  MIA.png   -> Miami Heat
+  MIL.png   -> Milwaukee Bucks
+  MNL.png   -> Minneapolis Lakers
+  NYK.png   -> New York Knicks
+  OKC.png   -> Oklahoma City Thunder
+  PHI.png   -> Philadelphia 76ers
+  PHW.png   -> Philadelphia Warriors (1947/1956)
+  POR.png   -> Portland Trail Blazers
+  ROC.png   -> Rochester Royals
+  SAS.png   -> San Antonio Spurs
+  SEA.png   -> Seattle SuperSonics
+  STL.png   -> St. Louis Hawks
+  SYR.png   -> Syracuse Nationals
+  TOR.png   -> Toronto Raptors
+  WSB.png   -> Washington Bullets
+
+No necesitas tener las 25 para empezar: agrega las que tengas, las
+demas simplemente se quedan mostrando el circulo con iniciales.
+
+RECOMENDACIONES DE FORMATO
+-------------------------------
+- Formato: PNG con fondo transparente (se ve mejor sobre el circulo
+  de color). JPG y WEBP tambien funcionan si no tienen transparencia.
+- Tamaño: cuadrado, minimo 200x200 px (se recorta automaticamente a
+  circulo con CSS, asi que no necesitas recortarlo tu mismo).
+- Peso: intenta que cada imagen pese menos de 150 KB para que la
+  pagina cargue rapido (puedes comprimir en https://squoosh.app).
+
+DONDE VA CADA COPIA
+------------------------
+Como tienes DOS versiones del proyecto, necesitas poner los MISMOS
+archivos en dos lugares:
+
+  1. Version estatica:
+     static/img/logos/BOS.png
+     static/img/logos/LAL.png
+     ... etc
+
+  2. Version JavaWeb:
+     javaweb/src/main/webapp/img/logos/BOS.png
+     javaweb/src/main/webapp/img/logos/LAL.png
+     ... etc
+
+Son literalmente los mismos archivos, solo copialos a las dos carpetas.
