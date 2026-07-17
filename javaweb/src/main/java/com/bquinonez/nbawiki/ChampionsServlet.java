@@ -29,8 +29,8 @@ public class ChampionsServlet extends HttpServlet {
 
     private static final String SQL_CAMPEONATOS =
         "SELECT c.id, c.anio, c.resultado_serie, c.conferencia_campeon AS conferencia, " +
-        "       ec.nombre AS campeon, ec.ciudad, ec.abreviatura, ec.color_principal, " +
-        "       ef.nombre AS finalista, j.nombre AS mvp " +
+        "       ec.id AS campeon_id, ec.nombre AS campeon, ec.ciudad, ec.abreviatura, ec.color_principal, " +
+        "       ef.id AS finalista_id, ef.nombre AS finalista, j.nombre AS mvp " +
         "FROM campeonatos c " +
         "JOIN equipos ec ON c.equipo_campeon_id = ec.id " +
         "JOIN equipos ef ON c.equipo_finalista_id = ef.id " +
@@ -87,11 +87,13 @@ public class ChampionsServlet extends HttpServlet {
                         c.setId(rs.getInt("id"));
                         c.setAnio(rs.getInt("anio"));
                         c.setCampeon(rs.getString("campeon"));
+                        c.setEquipoCampeonId(rs.getInt("campeon_id"));
                         c.setCiudad(rs.getString("ciudad"));
                         c.setAbreviatura(rs.getString("abreviatura"));
                         c.setColorPrincipal(rs.getString("color_principal"));
                         c.setConferencia(rs.getString("conferencia"));
                         c.setFinalista(rs.getString("finalista"));
+                        c.setEquipoFinalistaId(rs.getInt("finalista_id"));
                         c.setResultadoSerie(rs.getString("resultado_serie"));
                         String mvpNombre = rs.getString("mvp");
                         c.setMvp(mvpNombre != null ? mvpNombre : "Premio no existia aun (anterior a 1969)");

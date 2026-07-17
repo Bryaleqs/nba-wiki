@@ -82,6 +82,23 @@ public class PerfilServlet extends HttpServlet {
                     }
                 }
                 req.setAttribute("aniosTitulo", aniosTitulo);
+                req.setAttribute("equipoFavId", usuario.getEquipoFavoritoId());
+
+                // Posicion en el ranking de titulos (1 = el que mas titulos tiene)
+                try (PreparedStatement ps = con.prepareStatement(
+                        "SELECT COUNT(*) + 1 AS posicion FROM (" +
+                        "  SELECT equipo_campeon_id, COUNT(*) AS titulos FROM campeonatos " +
+                        "  GROUP BY equipo_campeon_id" +
+                        ") ranking WHERE ranking.titulos > (" +
+                        "  SELECT COUNT(*) FROM campeonatos WHERE equipo_campeon_id = ?" +
+                        ")")) {
+                    ps.setInt(1, usuario.getEquipoFavoritoId());
+                    try (ResultSet rs = ps.executeQuery()) {
+                        if (rs.next()) {
+                            req.setAttribute("equipoFavPosicion", rs.getInt("posicion"));
+                        }
+                    }
+                }
             }
 
             // Campeonatos que este usuario marco como favoritos

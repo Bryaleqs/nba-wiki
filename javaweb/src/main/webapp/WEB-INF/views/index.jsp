@@ -19,6 +19,7 @@
   </header>
 
   <div class="authbar">
+    <a href="${pageContext.request.contextPath}/equipos">Equipos</a>
     <c:choose>
       <c:when test="${not empty sessionScope.usuario}">
         <span class="saludo">Hola, <b>${sessionScope.usuario.nombreUsuario}</b></span>
@@ -61,19 +62,19 @@
     <c:forEach var="c" items="${campeonatos}" varStatus="st">
       <div class="card fade-in-up" id="card-${c.anio}" style="--team-color: ${c.colorPrincipal}; animation-delay: ${(st.index % 12) * 0.04}s;">
         <div class="top">
-          <div class="badge">
+          <a href="${pageContext.request.contextPath}/equipo?id=${c.equipoCampeonId}" class="badge">
             <img class="badge-logo" src="${pageContext.request.contextPath}/img/logos/${c.abreviatura}.png" alt=""
                  onload="this.style.display='block'; this.nextElementSibling.style.display='none';"
                  onerror="this.style.display='none';">
             <span class="badge-fallback">${c.abreviatura}</span>
-          </div>
+          </a>
           <div>
-            <h3>${c.campeon}</h3>
+            <h3><a href="${pageContext.request.contextPath}/equipo?id=${c.equipoCampeonId}" class="team-link">${c.campeon}</a></h3>
             <div class="year-tag">${c.ciudad} &middot; Temporada ${c.anio}</div>
           </div>
         </div>
         <div class="row"><span>Conferencia</span><b>${c.conferencia}</b></div>
-        <div class="row"><span>Rival en la final</span><b>${c.finalista}</b></div>
+        <div class="row"><span>Rival en la final</span><b><a href="${pageContext.request.contextPath}/equipo?id=${c.equipoFinalistaId}" class="team-link">${c.finalista}</a></b></div>
         <div class="row"><span>Resultado de la serie</span><b>${c.resultadoSerie}</b></div>
         <div class="roster">
           <c:forEach var="jugador" items="${c.roster}">

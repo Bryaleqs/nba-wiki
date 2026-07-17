@@ -657,3 +657,196 @@ footer {
   font-family: 'Anton', sans-serif;
   color: var(--team-color, var(--gold));
 }
+
+/* ---------- TEAM LINKS (in cards) ---------- */
+.badge { text-decoration: none; }
+
+.team-link {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px dashed transparent;
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.team-link:hover {
+  color: var(--gold);
+  border-bottom-color: var(--gold);
+}
+
+/* ---------- EQUIPOS INDEX PAGE ---------- */
+.equipos-wrap {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 20px 24px 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.equipo-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 14px 18px;
+  text-decoration: none;
+  color: var(--ink);
+  transition: transform 0.15s ease, border-color 0.15s ease;
+}
+
+.equipo-row:hover {
+  transform: translateX(4px);
+  border-color: var(--team-color, var(--gold));
+}
+
+.equipo-rank {
+  font-family: 'Anton', sans-serif;
+  color: var(--muted);
+  font-size: 14px;
+  width: 32px;
+  flex: 0 0 auto;
+}
+
+.equipo-info { flex: 1; min-width: 0; }
+.equipo-info h3 { font-size: 16px; text-transform: none; }
+.equipo-sub { font-size: 12px; color: var(--muted); }
+
+.equipo-titulos {
+  text-align: right;
+  flex: 0 0 auto;
+}
+
+.titulos-num {
+  font-family: 'Anton', sans-serif;
+  font-size: 22px;
+  color: var(--gold);
+  display: block;
+}
+
+.titulos-label {
+  font-size: 11px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.titulos-label.sin-titulos { color: var(--muted); font-size: 12px; text-transform: none; letter-spacing: normal; }
+
+/* ---------- EQUIPO DETAIL PAGE ---------- */
+.equipo-hero { padding-bottom: 32px; }
+
+.badge-xl {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: var(--team-color, var(--gold));
+  color: #14161b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Anton', sans-serif;
+  font-size: 28px;
+  margin: 0 auto 20px;
+  overflow: hidden;
+  position: relative;
+}
+
+.equipo-stats-row {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 28px;
+}
+
+.stat-box {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 16px 22px;
+  min-width: 140px;
+}
+
+.stat-num {
+  display: block;
+  font-family: 'Anton', sans-serif;
+  font-size: 30px;
+  color: var(--gold);
+}
+
+.stat-label {
+  font-size: 12px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.equipo-timeline-wrap {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 40px 24px 80px;
+}
+
+.section-title {
+  font-size: 20px;
+  margin-bottom: 18px;
+  color: var(--gold);
+}
+
+.equipo-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.apar-row {
+  display: grid;
+  grid-template-columns: 64px 110px 1fr 70px;
+  align-items: center;
+  gap: 12px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 13px;
+}
+
+.apar-anio {
+  font-family: 'Anton', sans-serif;
+  font-size: 16px;
+}
+
+.apar-resultado.campeon { color: var(--gold); font-weight: 600; }
+.apar-resultado.finalista { color: var(--muted); }
+
+.apar-rival { color: var(--muted); }
+.apar-serie { text-align: right; color: var(--muted); }
+
+/* ---------- PERFIL: ranking tag + full page link ---------- */
+.rank-tag {
+  display: inline-block;
+  margin-left: 8px;
+  font-size: 11px;
+  text-transform: none;
+  color: var(--gold);
+  border: 1px solid var(--gold);
+  padding: 2px 8px;
+  border-radius: 999px;
+  vertical-align: middle;
+}
+
+.team-link-full {
+  display: inline-block;
+  margin-top: 8px;
+  font-size: 12px;
+  color: var(--gold);
+  text-decoration: none;
+}
+
+.team-link-full:hover { text-decoration: underline; }
+
+@media (max-width: 560px) {
+  .apar-row { grid-template-columns: 50px 90px 1fr 60px; font-size: 12px; }
+}

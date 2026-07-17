@@ -20,6 +20,7 @@
 
   <div class="authbar">
     <span class="saludo">Hola, <b>${sessionScope.usuario.nombreUsuario}</b></span>
+    <a href="${pageContext.request.contextPath}/equipos">Equipos</a>
     <a href="${pageContext.request.contextPath}/campeonatos">Ver campeonatos</a>
     <a href="${pageContext.request.contextPath}/logout" class="btn-link">Cerrar sesion</a>
   </div>
@@ -44,20 +45,23 @@
       <c:choose>
         <c:when test="${not empty equipoFavNombre}">
           <div class="team-hero" style="--team-color: ${equipoFavColor}">
-            <div class="badge-big">
+            <a href="${pageContext.request.contextPath}/equipo?id=${equipoFavId}" class="badge-big">
               <img class="badge-logo" src="${pageContext.request.contextPath}/img/logos/${equipoFavAbbr}.png" alt=""
                    onload="this.style.display='block'; this.nextElementSibling.style.display='none';"
                    onerror="this.style.display='none';">
               <span class="badge-fallback">${equipoFavAbbr}</span>
-            </div>
+            </a>
             <div>
-              <h3>${equipoFavCiudad} ${equipoFavNombre}</h3>
+              <h3>${equipoFavCiudad} ${equipoFavNombre}
+                <c:if test="${not empty equipoFavPosicion}"><span class="rank-tag">#${equipoFavPosicion} en titulos</span></c:if>
+              </h3>
               <p class="team-stats">
                 <b>${equipoFavTitulos}</b> titulo<c:if test="${equipoFavTitulos != 1}">s</c:if> en la wiki
                 <c:if test="${equipoFavTitulos > 0}">
                   &middot; primero en <b>${equipoFavPrimero}</b> &middot; el mas reciente en <b>${equipoFavUltimo}</b>
                 </c:if>
               </p>
+              <a href="${pageContext.request.contextPath}/equipo?id=${equipoFavId}" class="team-link-full">Ver pagina completa del equipo &rarr;</a>
             </div>
           </div>
 

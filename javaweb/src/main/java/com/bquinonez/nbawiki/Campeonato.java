@@ -19,6 +19,8 @@ public class Campeonato {
     private int id;
     private boolean esFavorito;
     private int totalFavoritos;
+    private int equipoCampeonId;
+    private int equipoFinalistaId;
 
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
@@ -28,6 +30,12 @@ public class Campeonato {
 
     public int getTotalFavoritos() { return totalFavoritos; }
     public void setTotalFavoritos(int totalFavoritos) { this.totalFavoritos = totalFavoritos; }
+
+    public int getEquipoCampeonId() { return equipoCampeonId; }
+    public void setEquipoCampeonId(int equipoCampeonId) { this.equipoCampeonId = equipoCampeonId; }
+
+    public int getEquipoFinalistaId() { return equipoFinalistaId; }
+    public void setEquipoFinalistaId(int equipoFinalistaId) { this.equipoFinalistaId = equipoFinalistaId; }
 
     public int getAnio() { return anio; }
     public void setAnio(int anio) { this.anio = anio; }

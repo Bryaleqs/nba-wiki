@@ -6,6 +6,8 @@ public class Equipo {
     private String ciudad;
     private String colorPrincipal;
     private String abreviatura;
+    private int titulos;
+    private int apariciones;
 
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
@@ -21,4 +23,10 @@ public class Equipo {
 
     public String getAbreviatura() { return abreviatura; }
     public void setAbreviatura(String abreviatura) { this.abreviatura = abreviatura; }
+
+    public int getTitulos() { return titulos; }
+    public void setTitulos(int titulos) { this.titulos = titulos; }
+
+    public int getApariciones() { return apariciones; }
+    public void setApariciones(int apariciones) { this.apariciones = apariciones; }
 }
