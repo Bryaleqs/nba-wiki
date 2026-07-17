@@ -66,8 +66,8 @@ CREATE TABLE favoritos (
 
 -- EQUIPOS
 INSERT INTO equipos (id, nombre, ciudad, color_principal, abreviatura) VALUES
-(1, 'Bullets (original)', 'Baltimore', '#002B5C', 'BAL'),
-(2, 'Bullets', 'Baltimore', '#002B5C', 'BLT'),
+(1, 'Bullets (1948)', 'Baltimore', '#002B5C', 'BAL'),
+(2, 'Bullets (1971)', 'Baltimore', '#002B5C', 'BLT'),
 (3, 'Celtics', 'Boston', '#007A33', 'BOS'),
 (4, 'Bulls', 'Chicago', '#CE1141', 'CHI'),
 (5, 'Stags', 'Chicago', '#CE1141', 'CHS'),

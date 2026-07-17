@@ -12,12 +12,13 @@ REGLAS DEL NOMBRE DE ARCHIVO (IMPORTANTE)
   seguido de .png (o .jpg / .webp, ver mas abajo).
 - Ejemplo: el logo de los Boston Celtics va en BOS.png
 
-LISTA COMPLETA DE ARCHIVOS QUE PUEDES AGREGAR
+LISTA COMPLETA: LAS 35 FRANQUICIAS DE LA WIKI
 --------------------------------------------------
-(son los 25 equipos que aparecen como CAMPEONES en la wiki; los que
-solo aparecen como finalistas no muestran logo, asi que no hacen falta)
+Ahora que existen las paginas /equipos y /equipo, el logo se usa para
+CUALQUIER equipo que haya jugado una final (no solo los que ganaron).
 
-  BAL.png   -> Baltimore Bullets (1948)
+  -- Equipos que ganaron al menos un titulo (25) --
+  BAL.png   -> Baltimore Bullets (1948, franquicia original)
   BOS.png   -> Boston Celtics
   CHI.png   -> Chicago Bulls
   CLE.png   -> Cleveland Cavaliers
@@ -43,7 +44,19 @@ solo aparecen como finalistas no muestran logo, asi que no hacen falta)
   TOR.png   -> Toronto Raptors
   WSB.png   -> Washington Bullets
 
-No necesitas tener las 25 para empezar: agrega las que tengas, las
+  -- Equipos que SOLO llegaron de finalistas, nunca ganaron (10) --
+  CHS.png   -> Chicago Stags
+  FTW.png   -> Fort Wayne Pistons
+  IND.png   -> Indiana Pacers
+  NJN.png   -> New Jersey Nets
+  ORL.png   -> Orlando Magic
+  PHX.png   -> Phoenix Suns
+  SFW.png   -> San Francisco Warriors
+  UTA.png   -> Utah Jazz
+  WSC.png   -> Washington Capitols
+  BLT.png   -> Baltimore Bullets (franquicia continuada, era 1970s)
+
+No necesitas tener las 35 para empezar: agrega las que tengas, las
 demas simplemente se quedan mostrando el circulo con iniciales.
 
 RECOMENDACIONES DE FORMATO
