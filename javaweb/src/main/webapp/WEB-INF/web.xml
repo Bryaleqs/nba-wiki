@@ -12,11 +12,11 @@
   </welcome-file-list>
 
   <!-- Base de datos H2 EMBEBIDA: no depende de ningun servicio externo.
-       El archivo se crea solo (carpeta data/) y se auto-inicializa con
-       el script nba_wiki_h2.sql la primera vez que arranca la app. -->
+       El archivo se crea solo (carpeta data/) y se inicializa UNA sola vez
+       al arrancar la app (ver AppInitListener.java) -->
   <context-param>
     <param-name>db.url</param-name>
-    <param-value>jdbc:h2:file:./data/nba_wiki;AUTO_SERVER=TRUE;INIT=RUNSCRIPT FROM 'classpath:nba_wiki_h2.sql'</param-value>
+    <param-value>jdbc:h2:file:./data/nba_wiki;AUTO_SERVER=TRUE</param-value>
   </context-param>
   <context-param>
     <param-name>db.user</param-name>

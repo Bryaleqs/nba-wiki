@@ -458,6 +458,17 @@ footer {
 
 .form-footer-link a { color: var(--gold); text-decoration: none; }
 
+.back-link {
+  display: inline-block;
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 13px;
+  margin-bottom: 16px;
+  transition: color 0.15s, transform 0.15s;
+}
+
+.back-link:hover { color: var(--gold); transform: translateX(-3px); }
+
 /* ---------- ANIMATIONS ---------- */
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(14px); }

@@ -17,6 +17,7 @@
   </header>
 
   <main class="form-page">
+    <a href="${pageContext.request.contextPath}/campeonatos" class="back-link">&larr; Volver al inicio</a>
     <div class="form-card">
       <h2>Registrate</h2>
       <p class="sub">Crea tu cuenta para marcar campeonatos como favoritos.</p>

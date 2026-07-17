@@ -17,6 +17,7 @@
   </header>
 
   <main class="form-page">
+    <a href="${pageContext.request.contextPath}/campeonatos" class="back-link">&larr; Volver al inicio</a>
     <div class="form-card">
       <h2>Bienvenido de nuevo</h2>
       <p class="sub">Ingresa para marcar tus campeonatos favoritos.</p>
