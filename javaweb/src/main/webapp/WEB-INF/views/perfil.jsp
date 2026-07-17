@@ -77,9 +77,9 @@
       <form method="post" action="${pageContext.request.contextPath}/perfil" class="team-picker">
         <select name="equipoFavoritoId" required>
           <option value="" disabled ${empty equipoFavNombre ? 'selected' : ''}>Elige tu equipo...</option>
-          <c:forEach var="eq" items="${equipos}">
-            <option value="${eq.id}" ${eq.nombre == equipoFavNombre && eq.ciudad == equipoFavCiudad ? 'selected' : ''}>
-              ${eq.ciudad} ${eq.nombre}
+          <c:forEach var="equipo" items="${equipos}">
+            <option value="${equipo.id}" ${equipo.nombre == equipoFavNombre && equipo.ciudad == equipoFavCiudad ? 'selected' : ''}>
+              ${equipo.ciudad} ${equipo.nombre}
             </option>
           </c:forEach>
         </select>
